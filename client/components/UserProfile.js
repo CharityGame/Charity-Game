@@ -1,0 +1,1 @@
+//Displays user personal info and events info
