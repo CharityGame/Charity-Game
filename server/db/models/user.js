@@ -24,7 +24,7 @@ const User = db.define('user', {
     type: Sequelize.BOOLEAN,
     allowNull: false, 
     defaultValue: false
-  }
+  },
   points:{
     type: Sequelize.INTEGER
   },

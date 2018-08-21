@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {FormattedDate} from '../utils.js';
 
 export default class extends Component{
 
@@ -8,15 +9,14 @@ export default class extends Component{
 
 
     render(){
-        const {name, category, point, date, time} = this.props.event;
-        const d = date < 1000 ? '0' + date.toString() : date.toString();
-        const formattedDate = d.substring(0,2) + '/' + d.substring(2) + '/' + (new Date()).getFullYear();
+        const {name, category, point, time} = this.props.event;
+        const date = new FormattedDate(this.props.event.date);
         return(
             <div className='events-event'>
                 <h1 className='event-event-name'>{name}</h1>
                 <p className='event-event-category'>{category}</p>
                 <p className='event-event-point'>{point}</p>
-                <p className='event-event-date'>{formattedDate}</p>
+                <p className='event-event-date'>{date.date}</p>
             </div>
         )
     }
