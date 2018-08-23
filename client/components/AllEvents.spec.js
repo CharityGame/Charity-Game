@@ -44,26 +44,26 @@ describe('Event components', () => {
    const eventList = [
     new Event(name, location, date, time, eventDuration, category, point),
     new Event(name+' 2', location, date + 1, time + 1, eventDuration, category, point + 1),
-    new Event(name+' 3', location, date + 2, time + 2, eventDuration, category, point + 2), 
+    new Event(name+' 3', location, date + 2, time + 2, eventDuration, category, point + 2)
    ];
 
 
   beforeEach(() => {
-    allEventsWrapper = shallow(<AllEvents events={eventList}/>)
+    allEventsWrapper = shallow(<AllEvents events={eventList} />)
   });
 
   describe('AllEvents component', () => {
     
     it('renders three <UnitEvent /> components', () => {
         expect(allEventsWrapper.find(UnitEvent)).to.have.lengthOf(3);
-      });
+     });
 
-      it('does not renders any <DetailUnitEvent /> component', () => {
+    it('does not render any <DetailUnitEvent /> component', () => {
         expect(allEventsWrapper.find(DetailUnitEvent)).to.have.lengthOf(0);
-      });
+     });
 
-      describe('handleClick method', () => {
-
+     describe('handleClick method', () => {
+         
           beforeEach(() => {
               allEventsWrapper.find('button')
                     .first()
@@ -87,7 +87,7 @@ describe('Event components', () => {
   describe('UnitEvent component', () => {
       it('renders event name in an h1', () => {
           allEventsWrapper.find('h1').forEach((name, i) => {
-              name.text().to.be.equal(eventList[i].name);
+              expect(name.text()).to.be.equal(eventList[i].name);
           });
       });
   });
