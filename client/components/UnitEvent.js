@@ -7,7 +7,6 @@ export default class extends Component{
         super(props);
     }
 
-
     render(){
         const {name, category, point, time} = this.props.event;
         const date = new FormattedDate(this.props.event.date);

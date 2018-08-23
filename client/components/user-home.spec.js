@@ -8,7 +8,7 @@ const adapter = new Adapter()
 enzyme.configure({adapter})
 
 describe('UserHome', () => {
-  let userHome
+  let userHome;
 
   beforeEach(() => {
     userHome = shallow(<UserHome email="cody@email.com" />)
