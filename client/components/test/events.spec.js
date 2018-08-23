@@ -3,26 +3,21 @@ import React from 'react';
 import enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import { AllEvents } from './AllEvents';
-import UnitEvent from './UnitEvent';
-import DetailUnitEvent from './DetailUnitEvent';
+import { AllEvents } from '../AllEvents';
+import UnitEvent from '../UnitEvent';
+import DetailUnitEvent from '../DetailUnitEvent';
+import {Event} from './utils';
+import {sampleEvent} from './constants';
 
 const adapter = new Adapter();
 enzyme.configure({adapter});
 
-function Event(name, location, date, time, eventDuration, category, point){
-    this.name = name;
-    this.date = date;
-    this.time = time;
-    this.eventDuration = eventDuration;
-    this.category = category;
-    this.point = point;
-}
+
 
 describe('Event components', () => {
 
   let allEventsWrapper;
-
+  
   const {
             name, 
             location, 
@@ -31,23 +26,15 @@ describe('Event components', () => {
             eventDuration, 
             category, 
             point
-        } = {
-                name: 'Social Good', 
-                location: '79 5th Avenue Suite 300 New York, NY 10003',
-                date: 811,
-                time: 930,
-                eventDuration: 24,
-                category: 'Coding',
-                point: 5        
-            };
-      
-   const eventList = [
+        } = sampleEvent;
+
+  const eventList = [
     new Event(name, location, date, time, eventDuration, category, point),
     new Event(name+' 2', location, date + 1, time + 1, eventDuration, category, point + 1),
     new Event(name+' 3', location, date + 2, time + 2, eventDuration, category, point + 2)
    ];
 
-
+  
   beforeEach(() => {
     allEventsWrapper = shallow(<AllEvents events={eventList} />)
   });
@@ -63,12 +50,12 @@ describe('Event components', () => {
      });
 
      describe('handleClick method', () => {
-         
+
           beforeEach(() => {
               allEventsWrapper.find('button')
                     .first()
                     .simulate('click', {
-                                            preventDefault: ()=>{},
+                                            preventDefault: () => {},
                                             target: {id: 0}
                                         }
                                 );
@@ -85,10 +72,13 @@ describe('Event components', () => {
   });
 
   describe('UnitEvent component', () => {
+
+      const unitEventWrapper = shallow(<UnitEvent event={eventList[1]} />);
+      
       it('renders event name in an h1', () => {
-          allEventsWrapper.find('h1').forEach((name, i) => {
-              expect(name.text()).to.be.equal(eventList[i].name);
-          });
+          expect(unitEventWrapper.find('h1')).to.have.lengthOf(1);
+          console.log(unitEventWrapper.find('h1').text());
+          expect(unitEventWrapper.find('h1').text()).to.be.equal(eventList[1].name);
       });
   });
 
