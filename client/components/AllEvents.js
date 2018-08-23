@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import UnitEvent from './UnitEvent';
 import DetailUnitEvent from './DetailUnitEvent';
 
-class AllEvents extends Component{
+export class AllEvents extends Component{
 
     constructor(props){
         super(props);
@@ -34,7 +34,7 @@ class AllEvents extends Component{
                 {
                    this.props.events.map(event => {
                        return(
-                            <div key={event.id} className='events-unit-event'>
+                            <div key={event.name} className='events-unit-event'>
                                 <UnitEvent event = {event}/>
                                 <button onClick={this.handleClick} id={event.id}> More Detail </button>
                             </div>
