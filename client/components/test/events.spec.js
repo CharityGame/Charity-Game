@@ -32,12 +32,11 @@ describe('Event components', () => {
     new Event(name+' 3', location, date + 2, time + 2, eventDuration, category, point + 2)
    ];
 
-  
-  beforeEach(() => {
-    allEventsWrapper = shallow(<AllEvents events={eventList} />)
-  });
-
   describe('AllEvents component', () => {
+
+    beforeEach(() => {
+      allEventsWrapper = shallow(<AllEvents events={eventList} />)
+    });
     
     it('renders three <UnitEvent /> components', () => {
         expect(allEventsWrapper.find(UnitEvent)).to.have.lengthOf(3);
@@ -59,13 +58,17 @@ describe('Event components', () => {
                                 );
           });
 
-          it('sets the detail value in state to true', () => {
-            expect(allEventsWrapper.state().detail).to.be.true;
-          });
+          it('sets the detail value in state to true', 
+            () => {
+              expect(allEventsWrapper.state().detail).to.be.true;
+            }
+          );
 
-          it('renders a <DetailUnitEvent /> component', () => {
+          it('renders a <DetailUnitEvent /> component', 
+            () => {
               expect(allEventsWrapper.find(DetailUnitEvent)).to.have.lengthOf(1);
-          });
+             }
+          );
       });
   });
 
