@@ -19,5 +19,8 @@ module.exports = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
+  externals:[{
+    xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+  }]
 }

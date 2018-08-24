@@ -36,14 +36,17 @@ export class AllEvents extends Component{
                        return(
                             <div key={event.name} className='events-unit-event'>
                                 <UnitEvent event = {event}/>
-                                <button onClick={this.handleClick} id={event.id}> More Detail </button>
+                                <button onClick={this.handleClick} id={event.id}> 
+                                  More Detail 
+                                </button>
                             </div>
                        )
                    })
                 }
                 {
-                  this.state.detail ? <DetailUnitEvent event = {this.state.event} /> 
-                                        : null
+                  this.state.detail ? 
+                    <DetailUnitEvent event = {this.state.event} /> 
+                    : null
                 }
             </div>
         )

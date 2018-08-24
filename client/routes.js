@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, UnitEvent, AllEvents} from './components'
+import {Login, Signup, UserHome, UnitEvent, AllEvents, IbmWatson} from './components'
 import {me, events} from './store'
 
 class Routes extends Component {
@@ -15,13 +15,14 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/events" component={AllEvents} />
-        <Route exact path="/events/:id" component={UnitEvent} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/events' component={AllEvents} />
+        <Route exact path='/watson' component={IbmWatson} />
+        <Route exact path='/events/:id' component={UnitEvent} />
         {isLoggedIn && (
           <Switch>
-            <Route path="/home" component={UserHome} />
+            <Route path='/home' component={UserHome} />
           </Switch>
         )}
         <Route component={Login} />
