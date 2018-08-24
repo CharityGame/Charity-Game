@@ -12,8 +12,6 @@ import {sampleEvent} from './constants';
 const adapter = new Adapter();
 enzyme.configure({adapter});
 
-
-
 describe('Event components', () => {
 
   let allEventsWrapper;
@@ -46,7 +44,7 @@ describe('Event components', () => {
      });
 
     it('does not render any <DetailUnitEvent /> component', () => {
-        expect(allEventsWrapper.find(DetailUnitEvent)).to.have.lengthOf(0);
+        expect(allEventsWrapper.find(DetailUnitEvent).exists()).to.be.false;
      });
 
      describe('handleClick method', () => {
@@ -76,8 +74,7 @@ describe('Event components', () => {
       const unitEventWrapper = shallow(<UnitEvent event={eventList[1]} />);
       
       it('renders event name in an h1', () => {
-          expect(unitEventWrapper.find('h1')).to.have.lengthOf(1);
-          console.log(unitEventWrapper.find('h1').text());
+          expect(unitEventWrapper.find('h1').exists()).to.be.true;
           expect(unitEventWrapper.find('h1').text()).to.be.equal(eventList[1].name);
       });
   });
